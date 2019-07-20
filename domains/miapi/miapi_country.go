@@ -29,7 +29,8 @@ type Country struct {
 
 }
 
-const urlCountry = "https://api.mercadolibre.com/countries/"
+//const urlCountry = "https://api.mercadolibre.com/countries/"
+const urlCountry = "http://localhost:8081/countries/"
 
 func (country *Country) Get(c chan *apierrors.ApiError) {
 	if country.Id == "" {

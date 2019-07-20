@@ -27,7 +27,7 @@ func (result *Result) Get(id int64) *apierrors.ApiError {
 
 	wg.Add(1)
 	go result.Site.Get(c)
-
+	// r := <- c para "escuchar" que ingresa a mi canal
 
 	var err *apierrors.ApiError
 	go func() {

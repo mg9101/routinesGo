@@ -38,7 +38,8 @@ type User struct {
 	} `json:"status"`
 }
 
-const urlUsers = "https://api.mercadolibre.com/users/"
+//const urlUsers = "https://api.mercadolibre.com/users/"
+const urlUsers = "http://localhost:8081/users/"
 
 func (user *User) Get() *apierrors.ApiError {
 	if user.ID == 0 {

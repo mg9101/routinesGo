@@ -1,7 +1,7 @@
 package miapi
 
 import (
-	"../../services/miapi"
+	"../../services/miapiserv"
 	"../../utils/apierrors"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -15,6 +15,8 @@ const (
 	paramCountryId= "countryID"
 )
 
+var i int
+
 func GetUser(c *gin.Context) {
 	userID := c.Param(paramUserId)
 	id, err := strconv.ParseInt(userID, 10, 64)
@@ -26,7 +28,7 @@ func GetUser(c *gin.Context) {
 		c.JSON(apiError.Status, apiError)
 		return
 	}
-	user, apiError := miapi.GetUserFromAPI(id)
+	user, apiError := miapiserv.GetUserFromAPI(id)
 	if apiError != nil {
 		c.JSON(apiError.Status, apiError)
 		return
@@ -36,7 +38,7 @@ func GetUser(c *gin.Context) {
 
 func GetSite(c *gin.Context) {
 	siteID := c.Param(paramSiteId)
-	site, apiError := miapi.GetSiteFromAPI(siteID)
+	site, apiError := miapiserv.GetSiteFromAPI(siteID)
 	if apiError != nil {
 		c.JSON(apiError.Status, apiError)
 		return
@@ -45,7 +47,7 @@ func GetSite(c *gin.Context) {
 }
 
 func GetSites(c *gin.Context) {
-	sites, apiError := miapi.GetSitesFromAPI()
+	sites, apiError := miapiserv.GetSitesFromAPI()
 	if apiError != nil {
 		c.JSON(apiError.Status, apiError)
 		return
@@ -55,7 +57,7 @@ func GetSites(c *gin.Context) {
 
 func GetCategory(c *gin.Context) {
 	catID := c.Param(paramCategoryId)
-	category, apiError := miapi.GetCategoryFromAPI(catID)
+	category, apiError := miapiserv.GetCategoryFromAPI(catID)
 	if apiError != nil {
 		c.JSON(apiError.Status, apiError)
 		return
@@ -65,7 +67,7 @@ func GetCategory(c *gin.Context) {
 
 func GetCountry(c *gin.Context) {
 	countryID := c.Param(paramCountryId)
-	category, apiError := miapi.GetCountryFromAPI(countryID)
+	category, apiError := miapiserv.GetCountryFromAPI(countryID)
 	if apiError != nil {
 		c.JSON(apiError.Status, apiError)
 		return
@@ -75,7 +77,6 @@ func GetCountry(c *gin.Context) {
 
 
 func GetResult(c *gin.Context) {
-
 	userID := c.Param(paramUserId)
 	id, err := strconv.ParseInt(userID, 10, 64)
 	if err != nil {
@@ -86,11 +87,34 @@ func GetResult(c *gin.Context) {
 		c.JSON(apiError.Status, apiError)
 		return
 	}
-	result, apiError := miapi.GetResultFromAPI(id)
+	result, apiError := miapiserv.GetResultFromAPI(id)
 	if apiError != nil {
 		c.JSON(apiError.Status, apiError)
 		return
 	}
+	//limiter := time.Tick(3 * time.Second)
+	//<-limiter
 	c.JSON(http.StatusOK, result)
 }
 
+//Limit function is gin middleware to limit current requests
+func Limit(max int) gin.HandlerFunc {
+	sema := make(chan struct{}, max)
+	return func(c *gin.Context) {
+		var called, fulled bool
+		defer func() {
+			if called == false && fulled == false {
+				<-sema
+			}
+		}()
+		select {
+			case sema <- struct{}{}:
+				c.Next()
+				called = true
+				<-sema
+			default:
+				fulled = true
+				c.Status(http.StatusBadGateway)
+		}
+	}
+}

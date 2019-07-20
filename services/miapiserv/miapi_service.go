@@ -1,4 +1,4 @@
-package miapi
+package miapiserv
 
 import (
 	"../../domains/miapi"
@@ -83,6 +83,7 @@ func GetCountryFromAPI(id string) (*miapi.Country, *apierrors.ApiError){
 
 
 func GetResultFromAPI(id int64) (*miapi.Result, *apierrors.ApiError){
+
 	result := &miapi.Result{}
 	if err := result.Get(id); err != nil {
 		return nil, err

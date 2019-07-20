@@ -17,7 +17,8 @@ type Site struct {
 
 type Sites []Site
 
-const urlSite = "https://api.mercadolibre.com/sites/"
+//const urlSite = "https://api.mercadolibre.com/sites/"
+const urlSite = "http://localhost:8081/sites/"
 
 func (site *Site) Get(c chan *apierrors.ApiError) {
 	if site.Id == "" {
