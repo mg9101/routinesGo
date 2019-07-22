@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b5593c7-c2b1-4e89-b103-013b6ee06730" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/miapi/miapi_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/miapi/miapi_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/miapi/miapi_result_controller.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domains/miapi/miapi_country.go" beforeDir="false" afterPath="$PROJECT_DIR$/domains/miapi/miapi_country.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domains/miapi/miapi_result.go" beforeDir="false" afterPath="$PROJECT_DIR$/domains/miapi/miapi_result.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domains/miapi/miapi_site.go" beforeDir="false" afterPath="$PROJECT_DIR$/domains/miapi/miapi_site.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domains/miapi/miapi_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/domains/miapi/miapi_user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/miapi/miapi_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/miapiserv/miapi_service.go" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/miapi/miapi_controller.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="94" column="26" lean-forward="true" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+            <state relative-caret-position="187">
+              <caret line="106" column="21" lean-forward="true" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="21" />
               <folding>
                 <element signature="e#15#125#0" expanded="true" />
               </folding>
@@ -277,12 +268,12 @@
       <updated>1563302035579</updated>
       <workItem from="1563302039519" duration="2248000" />
       <workItem from="1563304349474" duration="22219000" />
-      <workItem from="1563541241480" duration="15545000" />
+      <workItem from="1563541241480" duration="16230000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40012000" />
+    <option name="totallyTimeSpent" value="40697000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -454,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/src/github.com/gin-gonic/gin/context.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/go/src/runtime/panic.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -485,10 +469,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/go/src/github.com/gin-gonic/gin/context.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/miapi/miapi_controller.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="94" column="26" lean-forward="true" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+        <state relative-caret-position="187">
+          <caret line="106" column="21" lean-forward="true" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="21" />
           <folding>
             <element signature="e#15#125#0" expanded="true" />
           </folding>

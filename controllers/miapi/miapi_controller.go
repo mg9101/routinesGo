@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 const (
@@ -97,12 +98,13 @@ func GetResult(c *gin.Context) {
 	c.JSON(http.StatusOK, result)
 }
 
-//Limit function is gin middleware to limit current requests
 func Limit(max int) gin.HandlerFunc {
 	sema := make(chan struct{}, max)
 	return func(c *gin.Context) {
 		var called, fulled bool
 		defer func() {
+			limiter := time.Tick(3 * time.Second)
+			<-limiter
 			if called == false && fulled == false {
 				<-sema
 			}
